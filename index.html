@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 50px;
+            color: #ff4081;
+            animation: bounce 1s infinite alternate;
+        }
+
+        @keyframes bounce {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-10px); }
+        }
+
+        .button {
+            background-color: #ff4081;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            margin: 20px;
+            border-radius: 5px;
+        }
+
+        .button:hover {
+            background-color: #f50057;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Happy Birthday Page -->
+    <div id="birthdayPage">
+        <h1>HAPPY BIRTHDAY MY BESTFRIEND💗💗🫂</h1>
+        <button class="button" onclick="nextPage()">Next</button>
+    </div>
+
+    <!-- Login Page -->
+    <div id="loginPage" class="hidden">
+        <h1>Login</h1>
+        <input type="text" id="username" placeholder="Username"><br><br>
+        <input type="password" id="password" placeholder="Password"><br><br>
+        <button class="button" onclick="login()">Login</button>
+        <p id="loginError" style="color: red;"></p>
+    </div>
+
+    <!-- Quiz Page -->
+    <div id="quizPage" class="hidden">
+        <h1>Quiz Time!</h1>
+        <p>First Question: Aap 19 ke ho gaye ho, yaad hai na?</p>
+        <button class="button" onclick="answer('yes')">Yes</button>
+        <button class="button" onclick="answer('no')">No</button>
+    </div>
+
+    <div id="selfAwarenessPage" class="hidden">
+        <h1>Question: Kya aapke naak par hamesha gussa rehta hai?</h1>
+        <button class="button" onclick="selfAware('never')">Never</button>
+        <button class="button" onclick="selfAware('sometimes')">Sometimes</button>
+        <button class="button" onclick="selfAware('always')">Always</button>
+        <button class="button" onclick="selfAware('yes')">Yes</button>
+    </div>
+
+    <!-- Final Story Page -->
+    <div id="storyPage" class="hidden">
+        <h1>Ab Tak Ki Kahani</h1>
+        <p>"Ek DM, Ek Raat Aur Ek Rishta Jo Bas Ban Hi Gaya" 💖</p>
+        <p>27th July 2024…<br>Ek DM aaya, ek ajeeb si vibe ke saath. Ek controversy se shuru hui baat,</p>
+        <p>lekin kuch hi lafzon mein aisa connection bana ki jaise yeh dosti Pehle se likhi hui thi. 🫂❤</p>
+        <p>Us waqt jo ho raha tha, uspe kabhi baat nahi hoti, kyunki zaroori yeh nahi ki kya beeta, zaroori yeh hai ki aaj kya hai. Aur ab sochta hoon, accha hi hua… Nahi toh LJ aage bhi rulata. Par ab, jo bhi hai, sirf accha hai. 💖</p>
+        <p>"Kuch log zindagi mein dukh ban kar nahi, Dawa ban kar aate hain." 💖</p>
+        <p>Phir Dheere-Dheere baatein badhti gayi… Aur vibe itni mili ki har baat mein ek alag apnapan tha. 🥰</p>
+        <p>Kabhi mazak, kabhi samjhna, kabhi gussa, Lekin har cheez mein ek Rishta jo har emotion se upar tha.</p>
+        <p>Aap mujhse 6 mahine badi sahi, lekin andar se abhi bhi bacchi hi hain! 😂 19 saal ki ho gayi, lekin masoomiyat aaj bhi wahi hai. Haan, jab zarurat padi to maa bhi bani, teacher bhi, aur sabse zyada – meri sabse pyaari dost bhi. 🫂❤</p>
+        <p>Aur ek cheez pakki hai – Har kalesh ke baad manana toh mujhe hi padta hai! 😂 (Chhota jo hoon na!) Aap gussa hongi, phir main sorry bolunga, Phir hans ke kahengi – "Chal, rehne de!" 😆</p>
+        <p>"Sachchi dosti wahi hoti hai, Jisme galti ka haq bhi ho, aur manane ka bhi!" 💖</p>
+        <p>Ab jab aap badi ho kar paise kamayengi, Toh mujhe Hot Wheels dilayengi, 😂🏎 Aur jab main kamaunga, toh hum France, Switzerland, Dubai – sab jagah ghoomne jayenge! 😍✈🌍</p>
+        <p>Aaj aapka din hai, aapka Happy Wala Birthday! 🎂🎉 Dua karta hoon, aap hamesha hansti rahen, dil kabhi udaas na ho. 🤲🥰</p>
+        <p>Jo chahein, wo aapko khud chal kar mile, Aur jo na chahein, wo aapke raste se hat jaye! 😂</p>
+        <p>🎉 Happy Birthday, Deepu! 🎂❤</p>
+        <p>(PS: Aap chahein jitni bhi badi ho jayein, mere liye toh ab bhi wahi bacchi hi rahengi! 😂💖)</p>
+        <p>"Dost toh hazaar milenge, par aap jaisa koi nahi, Har baat mein hasi, har baat mein koi kahani nahi. Aapse jhagde bhi hote hain, par pyaar bhi utna hi hai, Chhoti si zindagi hai, bas yeh Rishta kabhi purana nahi!" 🫂❤</p>
+        <button class="button" onclick="finish()">Finish</button>
+    </div>
+
+    <script>
+        function nextPage() {
+            document.getElementById('birthdayPage').classList.add('hidden');
+            document.getElementById('loginPage').classList.remove('hidden');
+        }
+
+        function login() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const correctUsername = "deebee";
+            const correctPassword = "deepanshi@#1";
+
+            if (username === correctUsername && password === correctPassword) {
+                document.getElementById('loginPage').classList.add('hidden');
+                document.getElementById('quizPage').classList.remove('hidden');
+            } else {
+                document.getElementById('loginError').textContent = "Incorrect username or password!";
+            }
+        }
+
+        function answer(response) {
+            if (response === 'yes') {
+                alert('Congo! 😂🥰');
+            } else {
+                alert('Wrong! 😂');
+            }
+            document.getElementById('quizPage').classList.add('hidden');
+            document.getElementById('selfAwarenessPage').classList.remove('hidden');
+        }
+
+        function selfAware(response) {
+            if (response === 'never') {
+                alert("SELF AWARE HONE KI JARURAT H ABHI😂😂");
+            } else {
+                alert("KAFI SELF AWARE H AAP😂😂");
+            }
+            document.getElementById('selfAwarenessPage').classList.add('hidden');
+            document.getElementById('storyPage').classList.remove('hidden');
+        }
+
+        function finish() {
+            alert("Thank you for completing the page!");
+        }
+    </script>
+
+</body>
+</html>
